@@ -1,0 +1,11 @@
+﻿  main.cpp
+C:\Users\manin\Documents\Github\MeshSimplification\display\inputManager.h(76,34): warning C4244: 'argument': conversion from 'const float' to 'int', possible loss of data
+  (compiling source file 'main.cpp')
+  
+C:\Users\manin\Documents\Github\MeshSimplification\display\inputManager.h(76,28): warning C4244: 'argument': conversion from 'const float' to 'int', possible loss of data
+  (compiling source file 'main.cpp')
+  
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+MSVCRTD.lib(initializers.obj) : warning LNK4098: defaultlib 'libcmt.lib' conflicts with use of other libs; use /NODEFAULTLIB:library
+glew32s.lib(glew.obj) : warning LNK4099: PDB '' was not found with 'glew32s.lib(glew.obj)' or at ''; linking object as if no debug info
+  MeshSimplification.vcxproj -> C:\Users\manin\Documents\Github\MeshSimplification\Debug\MeshSimplification.exe

@@ -1,0 +1,26 @@
+﻿  lineMesh.cpp
+  mesh.cpp
+  MeshSimplification.cpp
+C:\Users\manin\Documents\Github\MeshSimplification\engine3D\MeshSimplification.cpp(11,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\manin\Documents\Github\MeshSimplification\engine3D\MeshSimplification.cpp(15,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\manin\Documents\Github\MeshSimplification\engine3D\MeshSimplification.cpp(85,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\manin\Documents\Github\MeshSimplification\engine3D\MeshSimplification.cpp(327,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\manin\Documents\Github\MeshSimplification\engine3D\MeshSimplification.cpp(399,36): warning C4018: '<': signed/unsigned mismatch
+  MovableGLM.cpp
+  obj_loader.cpp
+C:\Users\manin\Documents\Github\MeshSimplification\engine3D\obj_loader.cpp(20,6): warning C4101: 'bla1': unreferenced local variable
+C:\Users\manin\Documents\Github\MeshSimplification\engine3D\obj_loader.cpp(69,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\manin\Documents\Github\MeshSimplification\engine3D\obj_loader.cpp(104,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\manin\Documents\Github\MeshSimplification\engine3D\obj_loader.cpp(119,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\manin\Documents\Github\MeshSimplification\engine3D\obj_loader.cpp(411,16): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  scene.cpp
+C:\Users\manin\Documents\Github\MeshSimplification\engine3D\scene.cpp(97,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\manin\Documents\Github\MeshSimplification\engine3D\scene.cpp(100,24): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\manin\Documents\Github\MeshSimplification\engine3D\scene.cpp(181,61): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\manin\Documents\Github\MeshSimplification\engine3D\scene.cpp(181,56): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  shader.cpp
+  shape.cpp
+  texture.cpp
+  Generating Code...
+  stb_image.c
+  engine3D.vcxproj -> C:\Users\manin\Documents\Github\MeshSimplification\Debug\engine3D.lib
