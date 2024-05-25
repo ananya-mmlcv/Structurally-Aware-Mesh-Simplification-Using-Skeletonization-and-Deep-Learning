@@ -42,13 +42,13 @@ To run the mesh simplification code you need to run simplification.py
 (With Skeletonization)
 
 ```bash
-python main.py -i data/mesh.obj -v 100 -ix data/Skeletonization/output/important_indices.txt
+python simplification.py -i data/mesh.obj -v 100 -ix data/Skeletonization/output/important_indices.txt
 ```
 
 (Without Skeletonization)
 
 ```bash
-python main.py -i data/mesh.obj -v 100
+python simplification.py -i data/mesh.obj -v 100
 ```
 
 This command runs the mesh simplification process on `data/mesh.obj`, targeting 100 vertices, and taking into account important vertex indices from the specified file.
