@@ -1,9 +1,9 @@
 # Structurally-Aware Mesh Simplification Using Skeletonization and Deep Learning (COMP4610/COMP8610-2024) - README
 
 Group 40
-- Ananya Sharma
-- Manindra de Mel
-- Rohit Minstry
+- Ananya Sharma (u7669839)
+- Manindra de Mel (u7156805)
+- Rohit Minstry (U7034818)
   
 
 ## Overview
