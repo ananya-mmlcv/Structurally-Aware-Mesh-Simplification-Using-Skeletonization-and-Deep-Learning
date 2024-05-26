@@ -66,6 +66,6 @@ To generate a text file containing the important vertices and edges, run the fol
 ```sh
 python util/Skeletonization/main.py
 ```
-The code is inspired from the work done by [author](https://github.com/navis-org/skeletor)
+The code for skeletonization is inspired from the work done by [author](https://github.com/navis-org/skeletor)
 
 This command runs the mesh simplification process on `data/mesh.obj`, targeting 100 vertices, and taking into account important vertex indices from the specified file.
