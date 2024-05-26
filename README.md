@@ -4,25 +4,36 @@
 
 This project explores two novel methodologies to enhance the traditional Quadratic Error Metric (QEM) approach for mesh simplification. The integration of skeletonization and deep learning techniques aims to preserve both geometric fidelity and intrinsic structural features of 3D meshes.
 
-We would like to credit the original Mesh simplification author that can be found [here](https://github.com/astaka-pe)
+We would like to credit the original QEM Mesh simplification [author](https://github.com/astaka-pe)
 
 ## Project Structure
 
 ```md
-├── data
-│   ├── output
-│   └── Skeletonization
-│       └── output
-├── docs
-└── util
+├───data
+│   ├───CNN
+│   │   └───output
+│   ├───models
+│   ├───output
+│   └───Skeletonization
+│       └───output
+├───docs
+└───util
+    ├───CNN
+    └───Skeletonization
 ```
 
 ### Directories
 
+
+- **data/CNN/output/**: Contains the output files generated from the CNN-based mesh simplification.
+- **data/models/**: Contains saved models and related files.
 - **data/output/**: Contains the output files generated after mesh simplification.
 - **data/Skeletonization/output/**: Contains the output files generated from the skeletonization process.
 - **docs/**: Documentation files related to the project.
 - **util/**: Utility scripts and modules used in the project.
+  - **util/CNN/**: Scripts related to the CNN-based mesh simplification.
+  - **util/Skeletonization/**: Scripts related to the skeletonization process.
+
 
 ### Usage
 
