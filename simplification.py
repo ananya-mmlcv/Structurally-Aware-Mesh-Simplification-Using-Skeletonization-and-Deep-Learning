@@ -7,7 +7,6 @@ def get_parser():
     parser.add_argument("-i", "--input", type=str, required=True, help="Input file name")
     parser.add_argument("-v", type=int, help="Target vertex number")
     parser.add_argument("-p", type=float, default=0.1, help="Rate of simplification (Ignored by -v)")
-    parser.add_argument("-optim", action="store_true", help="Specify for valence aware simplification")
     parser.add_argument("-ix", "--important_indices", type=str, help="File with important vertex indices")
     args = parser.parse_args()
     return args
@@ -42,7 +41,7 @@ def main():
         print("[ERROR]: Target vertex number should be smaller than {}!".format(mesh.vs.shape[0]))
         exit()
 
-    simp_mesh = mesh.simplification(target_v=target_v, valence_aware=args.optim)
+    simp_mesh = mesh.simplification(target_v=target_v)
     
     os.makedirs("data/output/", exist_ok=True)
     if args.important_indices:

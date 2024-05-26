@@ -44,7 +44,6 @@ To run the mesh simplification code you need to run simplification.py
 - `-i, --input`: Input file name (required)
 - `-v`: Target vertex number
 - `-p`: Rate of simplification (ignored if `-v` is specified)
-- `-optim`: Specify for valence aware simplification
 - `-isotropic`: Specify for isotropic simplification
 - `-ix, --important_indices`: File with important vertex indices
 

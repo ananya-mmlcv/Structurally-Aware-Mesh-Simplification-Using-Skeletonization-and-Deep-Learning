@@ -7,10 +7,6 @@ from tqdm import tqdm
 from sklearn.preprocessing import normalize
 import math
 
-# Constants used for valence weighting
-OPTIM_VALENCE = 6
-VALENCE_WEIGHT = 1
-
 class Mesh:
     def __init__(self, path, important_indices=[], important_vertex_error=10000, build_code=False, build_mat=False, manifold=True):
         """
@@ -232,12 +228,11 @@ class Mesh:
         self.v2v_mat = sp.sparse.csr_matrix((v2v_vals, v2v_inds), shape=(len(self.vs), len(self.vs)))  # Create sparse matrix
         self.v_dims = np.sum(self.v2v_mat.toarray(), axis=1)  # Compute vertex degrees
 
-    def simplification(self, target_v, valence_aware=True, midpoint=False):
+    def simplification(self, target_v, midpoint=False):
         """
         Simplify the mesh by reducing the number of vertices.
 
         :param target_v: Target number of vertices.
-        :param valence_aware: Flag to use valence-aware simplification.
         :param midpoint: Flag to use midpoint for edge collapse.
         :return: Simplified mesh.
         """
@@ -279,16 +274,9 @@ class Mesh:
                 except:  # If inversion fails, use midpoint
                     v_new = 0.5 * (v_0 + v_1)
                     v4_new = np.concatenate([v_new, np.array([1])])
-
-            # Apply valence penalty if valence-aware
-            valence_penalty = 1
-            if valence_aware:
-                merged_faces = vf[e[0]].intersection(vf[e[1]])  # Get merged faces
-                valence_new = len(vf[e[0]].union(vf[e[1]]).difference(merged_faces))  # Compute new valence
-                valence_penalty = self.valence_weight(valence_new)
             
             # Compute new error value
-            E_new = np.matmul(v4_new, np.matmul(Q_new, v4_new.T)) * valence_penalty
+            E_new = np.matmul(v4_new, np.matmul(Q_new, v4_new.T))
             if (e[0] in self.important_indices) or (e[1] in self.important_indices):  # Penalize important vertices
                 E_new = self.important_vertex_error # Penalize by the given error
             else:
@@ -324,7 +312,7 @@ class Mesh:
                 print("boundary edge cannot be collapsed!")
                 continue
             else:
-                self.edge_collapse(simp_mesh, vi_0, vi_1, merged_faces, vi_mask, fi_mask, vert_map, Q_s, E_heap, valence_aware=valence_aware)
+                self.edge_collapse(simp_mesh, vi_0, vi_1, merged_faces, vi_mask, fi_mask, vert_map, Q_s, E_heap)
                 pbar.update(1)  # Update progress bar
         
         self.rebuild_mesh(simp_mesh, vi_mask, fi_mask, vert_map)  # Rebuild the mesh
@@ -333,7 +321,7 @@ class Mesh:
         
         return simp_mesh  # Return simplified mesh
     
-    def edge_collapse(self, simp_mesh, vi_0, vi_1, merged_faces, vi_mask, fi_mask, vert_map, Q_s, E_heap, valence_aware):
+    def edge_collapse(self, simp_mesh, vi_0, vi_1, merged_faces, vi_mask, fi_mask, vert_map, Q_s, E_heap):
         """
         Collapse an edge and update the mesh.
 
@@ -346,7 +334,6 @@ class Mesh:
         :param vert_map: Vertex mapping.
         :param Q_s: Q matrices.
         :param E_heap: Heap of edge errors.
-        :param valence_aware: Flag for valence-aware simplification.
         """
         shared_vv = list(set(simp_mesh.v2v[vi_0]).intersection(set(simp_mesh.v2v[vi_1])))  # Shared vertices
         new_vi_0 = set(simp_mesh.v2v[vi_0]).union(set(simp_mesh.v2v[vi_1])).difference({vi_0, vi_1})  # New vertex index 0
@@ -377,28 +364,8 @@ class Mesh:
             Q_1 = Q_s[vv_i]  # Get Q matrix for adjacent vertex
             Q_new = Q_0 + Q_1  # Compute new Q matrix
             v4_mid = np.concatenate([v_mid, np.array([1])])  # Concatenate midpoint
-
-            valence_penalty = 1
-            if valence_aware:  # Apply valence penalty if valence-aware
-                merged_faces = simp_mesh.vf[vi_0].intersection(simp_mesh.vf[vv_i])
-                valence_new = len(simp_mesh.vf[vi_0].union(simp_mesh.vf[vv_i]).difference(merged_faces))
-                valence_penalty = self.valence_weight(valence_new)
-
-            E_new = np.matmul(v4_mid, np.matmul(Q_new, v4_mid.T)) * valence_penalty  # Compute new error
-            heapq.heappush(E_heap, (E_new, (vi_0, vv_i)))  # Add to heap
-
-    @staticmethod
-    def valence_weight(valence_new):
-        """
-        Compute the valence weight for a given valence.
-
-        :param valence_new: The new valence.
-        :return: The valence weight.
-        """
-        valence_penalty = abs(valence_new - OPTIM_VALENCE) * VALENCE_WEIGHT + 1
-        if valence_new == 3:
-            valence_penalty *= 100000
-        return valence_penalty      
+            E_new = np.matmul(v4_mid, np.matmul(Q_new, v4_mid.T))  # Compute new error
+            heapq.heappush(E_heap, (E_new, (vi_0, vv_i)))  # Add to heap   
     
     @staticmethod
     def rebuild_mesh(simp_mesh, vi_mask, fi_mask, vert_map):
