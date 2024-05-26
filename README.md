@@ -1,8 +1,10 @@
-# Structurally-Aware Mesh Simplification Using Skeletonization and Deep Learning (COMP4610-2024) - README
+# Structurally-Aware Mesh Simplification Using Skeletonization and Deep Learning (COMP4610/COMP8610-2024) - README
 
+Group 40
 - Ananya Sharma
 - Manindra de Mel
 - Rohit Minstry
+  
 
 ## Overview
 
