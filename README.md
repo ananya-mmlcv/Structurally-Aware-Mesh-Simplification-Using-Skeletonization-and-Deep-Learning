@@ -4,7 +4,7 @@
 
 This project explores two novel methodologies to enhance the traditional Quadratic Error Metric (QEM) approach for mesh simplification. The integration of skeletonization and deep learning techniques aims to preserve both geometric fidelity and intrinsic structural features of 3D meshes.
 
-We would like to credit the original Mesh simplification author that can be found [here](https://github.com/astaka-pe)
+We would like to credit the original QEM Mesh simplification [author](https://github.com/astaka-pe)
 
 ## Project Structure
 
