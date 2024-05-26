@@ -44,8 +44,17 @@ def main():
     simp_mesh = mesh.simplification(target_v=target_v)
     
     os.makedirs("data/output/", exist_ok=True)
+
+        # Determine the output filename based on the input file path
+    if "data/CNN" in args.important_indices:
+        output_suffix = "CNN"
+    else:
+        output_suffix = "skeletonization" if args.important_indices else "_qem"
+    
+    output_filename = f"data/output/{mesh_name}_{simp_mesh.vs.shape[0]}{output_suffix}.obj"
+
     if args.important_indices:
-        simp_mesh.save("data/output/{}_{}_with_skeletonization.obj".format(mesh_name, simp_mesh.vs.shape[0]))
+        simp_mesh.save("data/output/{}_{}_with_{}.obj".format(mesh_name, simp_mesh.vs.shape[0], output_suffix))
     else:
         simp_mesh.save("data/output/{}_{}_qem.obj".format(mesh_name, simp_mesh.vs.shape[0]))
     print("[FIN] Simplification Completed!")
