@@ -1,5 +1,9 @@
 # Structurally-Aware Mesh Simplification Using Skeletonization and Deep Learning (COMP4610-2024) - README
 
+- Ananya Sharma
+- Manindra de Mel
+- Rohit Minstry
+
 ## Overview
 
 This project explores two novel methodologies to enhance the traditional Quadratic Error Metric (QEM) approach for mesh simplification. The integration of skeletonization and deep learning techniques aims to preserve both geometric fidelity and intrinsic structural features of 3D meshes.
