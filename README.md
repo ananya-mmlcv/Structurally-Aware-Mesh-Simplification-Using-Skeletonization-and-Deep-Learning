@@ -60,4 +60,11 @@ python simplification.py -i data/mesh.obj -v 100 -ix data/Skeletonization/output
 python simplification.py -i data/mesh.obj -v 100
 ```
 
+To generate a text file containing the important vertices and edges, run the following script:
+The code is inspired from the work done by [author](https://github.com/navis-org/skeletor)
+
+```sh
+python util/Skeletonization/main.py
+```
+
 This command runs the mesh simplification process on `data/mesh.obj`, targeting 100 vertices, and taking into account important vertex indices from the specified file.
