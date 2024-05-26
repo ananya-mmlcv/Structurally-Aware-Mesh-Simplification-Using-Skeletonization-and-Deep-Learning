@@ -50,8 +50,6 @@ def main():
         output_suffix = "CNN"
     else:
         output_suffix = "skeletonization" if args.important_indices else "_qem"
-    
-    output_filename = f"data/output/{mesh_name}_{simp_mesh.vs.shape[0]}{output_suffix}.obj"
 
     if args.important_indices:
         simp_mesh.save("data/output/{}_{}_with_{}.obj".format(mesh_name, simp_mesh.vs.shape[0], output_suffix))
