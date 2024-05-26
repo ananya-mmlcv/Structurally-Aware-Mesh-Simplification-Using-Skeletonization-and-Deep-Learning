@@ -48,8 +48,10 @@ def main():
         # Determine the output filename based on the input file path
     if "data/CNN" in args.important_indices:
         output_suffix = "CNN"
+    elif "data/Skeletonization" in args.important_indices:
+        output_suffix = "skeletonization"
     else:
-        output_suffix = "skeletonization" if args.important_indices else "_qem"
+        output_suffix = "exported"
 
     if args.important_indices:
         simp_mesh.save("data/output/{}_{}_with_{}.obj".format(mesh_name, simp_mesh.vs.shape[0], output_suffix))
